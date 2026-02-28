@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Login | Internal</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #1c1e21;
+            font-size: 24px;
+        }
+
+        p.subtitle {
+            color: #606770;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            color: #4b4f56;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1877f2;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #166fe5;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .error {
+            background-color: #ffebe9;
+            color: #ce3c2e;
+            border: 1px solid rgba(255,129,130,0.4);
+        }
+
+        .success {
+            background-color: #e6ffed;
+            color: #22863a;
+            border: 1px solid rgba(52,208,88,0.4);
+        }
+
+        .hint-text {
+            margin-top: 30px;
+            font-size: 11px;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2>Administrator Login</h2>
+        <p class="subtitle">Secure Portal Access</p>
+        
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username..." autocomplete="off">
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="••••••••">
+        </div>
+
+        <button onclick="checkLogin()">Sign In</button>
+
+        <div id="message"></div>
+
+        <p class="hint-text">Note: All login attempts are logged in the developer debug console for security audits.</p>
+    </div>
+
+    <script>
+        // --- ESCAPE ROOM LOGIC ---
+        
+        // This variable is "hidden" but accessible in the console
+        window.temp_auth_token = "DELTA_V_909";
+
+        // Initial logs to guide the player
+        console.log("%c [SYSTEM] Boot sequence complete. ", "background: #222; color: #bada55; font-weight: bold;");
+        console.warn("[AUTH] Production login server is offline. Falling back to Debug Mode.");
+        console.info("[INFO] Developer Note: Use the 'temp_auth_token' variable as the username.");
+        console.info("[INFO] To retrieve the password, execute the recovery function: getAdminPass()");
+
+        // The function the player needs to type into the console
+        window.getAdminPass = function() {
+            console.log("%c Accessing Encrypted Vault... ", "color: orange");
+            setTimeout(() => {
+                console.log("%c Password Found: 'thing' ", "color: white; background: green; padding: 5px; border-radius: 3px;");
+            }, 1000);
+            return "Querying database...";
+        };
+
+        function checkLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const msg = document.getElementById('message');
+
+            msg.style.display = 'block';
+            
+            if (user === "Between" && pass === "thing") {
+                msg.className = 'success';
+                msg.innerHTML = "<strong>Access Granted!</strong><br>Next URL: everett2323.github.io/end";
+                console.log("%c LOGIN SUCCESSFUL: Proceed to the File Explorer. ", "font-size: 20px; color: #22863a;");
+            } else {
+                msg.className = 'error';
+                msg.innerText = "Invalid credentials. Audit log updated.";
+                console.error("[AUDIT FAILURE] Attempt by: " + (user || "anonymous") + ". Check internal variables for correct ID.");
+            }
+        }
+    </script>
+</body>
+</html>
