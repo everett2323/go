@@ -130,18 +130,15 @@
     </div>
 
     <script>
-        // --- ESCAPE ROOM LOGIC ---
-        
-        // This variable is "hidden" but accessible in the console
-        window.temp_auth_token = "DELTA_V_909";
 
-        // Initial logs to guide the player
+        window.temp_auth_token = "Between";
+
         console.log("%c [SYSTEM] Boot sequence complete. ", "background: #222; color: #bada55; font-weight: bold;");
         console.warn("[AUTH] Production login server is offline. Falling back to Debug Mode.");
         console.info("[INFO] Developer Note: Use the 'temp_auth_token' variable as the username.");
         console.info("[INFO] To retrieve the password, execute the recovery function: getAdminPass()");
 
-        // The function the player needs to type into the console
+
         window.getAdminPass = function() {
             console.log("%c Accessing Encrypted Vault... ", "color: orange");
             setTimeout(() => {
